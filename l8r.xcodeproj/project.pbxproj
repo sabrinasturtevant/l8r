@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D996A94F23FB824500EFC519 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D996A94E23FB824500EFC519 /* ContactTableViewCell.swift */; };
 		D9B1A34923F1BDC10000D8E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1A34823F1BDC10000D8E2 /* AppDelegate.swift */; };
 		D9B1A34B23F1BDC10000D8E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1A34A23F1BDC10000D8E2 /* SceneDelegate.swift */; };
 		D9B1A34D23F1BDC10000D8E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B1A34C23F1BDC10000D8E2 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D996A94E23FB824500EFC519 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		D9B1A34523F1BDC10000D8E2 /* l8r.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = l8r.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B1A34823F1BDC10000D8E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9B1A34A23F1BDC10000D8E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				D9B1A34A23F1BDC10000D8E2 /* SceneDelegate.swift */,
 				D9B1A34C23F1BDC10000D8E2 /* ViewController.swift */,
 				D9B1A34E23F1BDC10000D8E2 /* Main.storyboard */,
+				D996A94E23FB824500EFC519 /* ContactTableViewCell.swift */,
 				D9B1A35423F1BDC30000D8E2 /* Assets.xcassets */,
 				D9B1A35623F1BDC40000D8E2 /* LaunchScreen.storyboard */,
 				D9B1A35923F1BDC40000D8E2 /* Info.plist */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B1A34D23F1BDC10000D8E2 /* ViewController.swift in Sources */,
+				D996A94F23FB824500EFC519 /* ContactTableViewCell.swift in Sources */,
 				D9B1A34923F1BDC10000D8E2 /* AppDelegate.swift in Sources */,
 				D9B1A35323F1BDC10000D8E2 /* l8r.xcdatamodeld in Sources */,
 				D9B1A34B23F1BDC10000D8E2 /* SceneDelegate.swift in Sources */,
