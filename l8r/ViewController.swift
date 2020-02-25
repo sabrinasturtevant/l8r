@@ -6,13 +6,58 @@
 //  Copyright © 2020 Sabrina Sturtevant. All rights reserved.
 //
 
+
 import UIKit
-// 1
+import MessageUI
+
+class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    func displayMessageInterface() {
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.recipients = ["3142026521"]
+        composeVC.body = "I love Swift!"
+        
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        } else {
+            print("Can't send messages.")
+        }
+    }
+    
+    
+    @IBAction func sendMessageButtonAction(_ sender: Any) {
+        displayMessageInterface()
+    }
+    
+    
+}
+
+
+
+
+/*
+import UIKit
 import Contacts
 
 class ViewController: UIViewController {
     
-     var contacts = [CNContact]()
+    var contacts = [CNContact]()
     
     
     let store = CNContactStore()
@@ -27,9 +72,9 @@ class ViewController: UIViewController {
 
     
 
-    // 2
+    
     if authorizationStatus == .notDetermined {
-      // 3
+      
       store.requestAccess(for: .contacts) { [weak self] didAuthorize,
       error in
         if didAuthorize {
@@ -46,7 +91,7 @@ class ViewController: UIViewController {
   func retrieveContacts(from store: CNContactStore) {
     let containerId = store.defaultContainerIdentifier()
     let predicate = CNContact.predicateForContactsInContainer(withIdentifier: containerId)
-    // 4
+    
     let keysToFetch = [CNContactGivenNameKey as CNKeyDescriptor,
                        CNContactFamilyNameKey as CNKeyDescriptor,
                        CNContactImageDataAvailableKey as
@@ -58,7 +103,7 @@ class ViewController: UIViewController {
       self?.tableView.reloadData()
     }
 
-    // 5
+    
     print(contacts)
   }
     
@@ -75,7 +120,7 @@ class ViewController: UIViewController {
 
             cell.nameLabel.text = "\(contact.givenName) \(contact.familyName)"
 
-            // 4
+            
             if contact.imageDataAvailable == true, let imageData = contact.imageData {
               cell.contactImage.image = UIImage(data: imageData)
             }
@@ -114,4 +159,4 @@ extension ViewController: UITableViewDelegate {
 }
 
  */
-
+*/
