@@ -9,10 +9,47 @@
 
 import UIKit
 import MessageUI
+import Contacts
+import ContactsUI
 
-class ViewController: UIViewController, MFMessageComposeViewControllerDelegate {
+class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, CNContactPickerDelegate {
+    
+    var contacts = [CNContact]()
+    
+    var contactName: [String] = []
+
+     
+     let store = CNContactStore()
+     let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+    }
+    
+    @IBAction func show(_ sender: Any) {
+        let contacVC = CNContactPickerViewController()
+        contacVC.delegate = self
+        self.present(contacVC, animated: true, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        print(contact.phoneNumbers)
+        print(contact.givenName)
+        let numbers = contact.phoneNumbers //.first
+//        print((numbers?.value)?.stringValue ?? "")
+        
+        
+        contactName.append(contact.givenName)
+        print(contactName)
+        
+//having a hard time getting the phone numbers as a string to put into the message view
+//i think i wamt to take a break and start getting my exact buttons nd text fields in here
+        
+//        self.lblNumber.text = " Contact No. \((numbers?.value)?.stringValue ?? "")"
+          
+    }
+
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -59,7 +96,6 @@ class ViewController: UIViewController {
     
     var contacts = [CNContact]()
     
-    
     let store = CNContactStore()
     let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
     
@@ -87,7 +123,8 @@ class ViewController: UIViewController {
     tableView.delegate = self as? UITableViewDelegate
     tableView.dataSource = self as? UITableViewDataSource
   }
-
+ 
+/////////cant really read this code. need help understanding
   func retrieveContacts(from store: CNContactStore) {
     let containerId = store.defaultContainerIdentifier()
     let predicate = CNContact.predicateForContactsInContainer(withIdentifier: containerId)
