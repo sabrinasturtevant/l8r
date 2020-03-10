@@ -175,6 +175,9 @@
                                 <rect key="frame" x="66" y="689" width="248" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="sendButton"/>
+                                <connections>
+                                    <action selector="sendButtonTapped:" destination="FkD-OL-FQo" eventType="touchUpInside" id="MTH-0P-HK2"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="no one selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQu-Ib-xND">
                                 <rect key="frame" x="40" y="188" width="163" height="21"/>
@@ -188,6 +191,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="messageFieldAction:" destination="FkD-OL-FQo" eventType="editingDidEnd" id="8Vl-VG-T3G"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vdj-aF-EEw">
                                 <rect key="frame" x="0.0" y="533" width="375" height="100"/>

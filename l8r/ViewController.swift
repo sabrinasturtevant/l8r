@@ -17,12 +17,22 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, 
         
     }
     
+    var phoneNumber = [""]
+    var messageText = ""
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+       
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     @IBAction func textButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: "textButtonSegue", sender: nil)
@@ -55,6 +65,9 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, 
     
     @IBOutlet weak var messageFieldOutlet: UITextField!
     
+    @IBAction func messageFieldAction(_ sender: Any) {
+
+    }
     
     @IBAction func sendToPlusTapped(_ sender: Any) {
         let contacVC = CNContactPickerViewController()
@@ -65,9 +78,11 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, 
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
             print(contact.phoneNumbers)
             print(contact.givenName)
-            let numbers = contact.phoneNumbers //.first
-    //        print((numbers?.value)?.stringValue ?? "")
-            print(numbers)
+            let numbers = contact.phoneNumbers.first
+        print((numbers?.value)?.stringValue ?? "")
+
+        phoneNumber.append((numbers?.value)?.stringValue ?? "")
+        
 
     //        self.lblNumber.text = " Contact No. \((numbers?.value)?.stringValue ?? "")"
         
@@ -78,10 +93,28 @@ class ViewController: UIViewController, MFMessageComposeViewControllerDelegate, 
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func displayMessageInterface() {
+        
+        let composeVC = MFMessageComposeViewController()
+        composeVC.messageComposeDelegate = self
+        
+        // Configure the fields of the interface.
+        composeVC.recipients = phoneNumber
+        composeVC.body = messageFieldOutlet.text
+        
+        // Present the view controller modally.
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        } else {
+            print("Can't send messages.")
+        }
+    }
 
     
-    
-    
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        displayMessageInterface()
+    }
     
 }
 
